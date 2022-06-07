@@ -20,6 +20,7 @@ body, input, button {
   color: #484848;
 }
 
+
 #root, #wrapper {
   display: flex;
   flex-direction: column;
@@ -82,4 +83,8 @@ ul, form {
 
 .todo:hover {
   cursor: pointer;
+}
+
+.completed {
+  color: gray;
 }
