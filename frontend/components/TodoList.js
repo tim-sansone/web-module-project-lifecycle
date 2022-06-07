@@ -5,7 +5,7 @@ export default class TodoList extends React.Component {
   render() {
     // console.log(this.props.todos);
     return (
-      <div className="container">
+      <div id="todos">
         <h2>Todos</h2>
         {this.props.todos.map(todo => {
           if(this.props.hide){

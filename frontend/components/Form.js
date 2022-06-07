@@ -14,7 +14,7 @@ export default class Form extends React.Component {
 
   handleSubmit = evt => {
     evt.preventDefault();
-    this.props.submitNew(this.state.textInput);
+    this.state.textInput ? this.props.submitNew(this.state.textInput) : this.props.error("Please Enter A Todo")
     this.setState({
       textInput: ""
     })

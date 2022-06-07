@@ -11,7 +11,8 @@ export default class App extends React.Component {
   
   state = {
     todos: [],
-    hide: false
+    hide: false,
+    error: ""
   }
 
   componentDidMount(){
@@ -33,7 +34,8 @@ export default class App extends React.Component {
     axios.post(URL, newTodo)
       .then(res => {
         this.setState({
-          todos: [...this.state.todos, res.data.data]
+          todos: [...this.state.todos, res.data.data],
+          error: ""
         })
       })
       .catch(err => console.log(err))
@@ -60,13 +62,20 @@ export default class App extends React.Component {
     })
   }
 
+  error = str => {
+    this.setState({
+      error: str
+    })
+  }
+
   render() {
     return (
-      <>
+      <div>
+        { this.state.error && <p id="error">{this.state.error}</p> }
         <TodoList todos={this.state.todos} completed={this.completed} hide={this.state.hide}/>
-        <Form submitNew={this.submitNew}/>
+        <Form submitNew={this.submitNew} error={this.error}/>
         <button onClick={this.hide}>{ this.state.hide ? "Show Completed" : "Hide Completed" }</button>
-      </>
+      </div>
     )
   }
 }
